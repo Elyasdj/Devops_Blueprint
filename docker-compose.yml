@@ -4,7 +4,7 @@ services:
     container_name: python_web_app
     ports:
       - "5000:5000"
-    restart: unless-stopped 
+    restart: always 
 
   prometheus:
     image: prom/prometheus:v2.37.0

@@ -9,7 +9,7 @@ REQUEST_COUNT = Counter('http_requests_total', 'Total number of HTTP requests')
 @app.route('/')
 def hello_world():
     REQUEST_COUNT.inc() # Increment the counter on each request
-    return 'Hello, DevOps Engineer!'
+    return 'Hello, Dexter Morgan!'
 
 app.wsgi_app = DispatcherMiddleware(app.wsgi_app, {
     '/metrics': make_wsgi_app()

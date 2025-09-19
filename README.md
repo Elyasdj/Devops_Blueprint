@@ -16,7 +16,7 @@ This repository contains the solution for the DevOps practical test. It includes
 
 3.  **Run the application stack:**
     ```bash
-    docker compose up --build
+    docker compose up -d --build
     ```
 
     **Access Services:**
@@ -46,7 +46,9 @@ The CI/CD pipeline is defined in `.gitlab-ci.yml`. It is automatically triggered
 
 ## 🚨 Failure and Recovery
 
-* **Container Failure:** The web service is configured with `restart: always`. If the container crashes, Docker will automatically restart it. You can test this with `docker kill python_web_app`.
+* **Container Failure:** The web service is configured with `restart: always`. If the container crashes, Docker will automatically restart it.
+
 * **iptables Rule:** An `iptables` rule can be added to block external traffic to port 5000.
+
     * **To add the rule:** `sudo iptables -I INPUT -p tcp --dport 5000 ! -s 127.0.0.1 -j DROP`
     * **To remove the rule:** `sudo iptables -D INPUT 1` (assuming it's the first rule).

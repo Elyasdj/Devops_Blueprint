@@ -1,0 +1,5 @@
+route:
+  receiver: 'null' # Default receiver, does nothing
+
+receivers:
+  - name: 'null'

@@ -18,9 +18,22 @@ This repository contains the solution for the DevOps practical test. It includes
     ```bash
     docker-compose up --build
     ```
+
+    **Access Services:**
     * Web Service: `http://localhost:5000`
     * Prometheus: `http://localhost:9090`
     * Alertmanager: `http://localhost:9093`
+
+## 📊 Monitoring & Alerting
+
+**Prometheus Targets Status:** `http://localhost:9090/targets`
+
+**Active Alerts:** `http://localhost:9090/alerts`
+
+**Configured Alert Rules:**
+- `InstanceDown`: Triggers when any service instance is down for more than 1 minute
+- `AlwaysFiringForTest`: Test alert to verify Alertmanager integration
+
 
 ## ⚙️  CI/CD Pipeline
 

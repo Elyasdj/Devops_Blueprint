@@ -1,0 +1,39 @@
+stages:
+  - build
+  - test
+  - deploy
+
+variables:
+  IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+
+services:
+  - docker:20.10.16-dind
+
+build_image:
+  stage: build
+  image: docker:20.10.16
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - docker build -t $IMAGE_TAG ./app
+    - docker push $IMAGE_TAG
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+
+test_service:
+  stage: test
+  image: curlimages/curl:latest
+  script:
+    - echo "This is a placeholder for actual tests."
+    - echo "Test stage passed."
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+
+deploy_job:
+  stage: deploy
+  image: alpine:latest
+  script:
+    - echo "Deploying image $IMAGE_TAG to production..."
+    - echo "Deployment simulation successful!"
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"

@@ -16,7 +16,7 @@ This repository contains the solution for the DevOps practical test. It includes
 
 3.  **Run the application stack:**
     ```bash
-    docker-compose up --build
+    docker compose up --build
     ```
 
     **Access Services:**
